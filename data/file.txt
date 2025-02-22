@@ -1,0 +1,125 @@
+Personal Profile – Abhay Bansal
+1. Introduction
+Abhay Bansal is a Full Stack Developer with expertise in AI application development. He has a strong foundation in frontend and backend technologies and is currently expanding his knowledge in DevOps, Kubernetes, and AI-driven solutions.
+
+Abhay has built multiple AI-powered applications, including a ChatGPT clone trained on 30,000+ pages of custom data, a personal AI chat assistant with a 3D avatar, and AI-powered code reviewers.
+
+He is currently pursuing a B.Tech in Computer Science at Chandigarh University (2022-2026) and has extensive experience in software development, problem-solving, and competitive programming.
+
+I am 22 year old 
+
+2. Technical Skills & Expertise
+Frontend Development:
+React.js (Advanced)
+Next.js
+Three.js & Three Fiber (3D Modeling & AI Integration)
+GSAP & Framer Motion (Animations & UI Enhancements)
+Backend Development:
+Node.js / Express.js
+Prisma (ORM for databases)
+REST & GraphQL APIs
+Database Management:
+PostgreSQL
+MongoDB (NoSQL)
+MySQL / Oracle
+Programming Languages:
+C++
+Python
+Java
+DevOps & Cloud Computing:
+Kubernetes (Learning in Progress)
+Vercel (For deployments)
+Docker & CI/CD Pipelines (Basic knowledge)
+Tools & Technologies:
+Git / GitHub (Version control & collaboration)
+Postman (API testing & development)
+Visual Studio Code (Primary IDE for development)
+Competitive Programming & Problem Solving:
+5-Star Coder on HackerRank
+Solved 500+ problems on CodeChef
+Top 1% in Coding Ninjas Competitive Programming Contests
+3. AI & Full-Stack Projects
+A. AI-Powered Chat Applications
+ChatGPT Clone
+
+Trained on 30,000+ pages of customized data for more personalized AI responses.
+Optimized the efficiency and reliability of the model.
+Improved response time & query handling.
+Personal AI Chat Assistant (3D Model)
+
+Developed using Three.js and Three Fiber to provide a 3D interactive avatar.
+Integrated custom knowledge for personalized assistance.
+Enhanced user interaction using natural language processing (NLP).
+AI-Powered Code Reviewer
+
+Built an AI-powered tool that analyzes code quality and suggests optimizations.
+Supports JavaScript, Python, and C++.
+Helps developers improve their code efficiency.
+B. Full-Stack Web Applications
+Freelance Website (React, Next.js, GSAP)
+
+Created a marketplace for customizable website templates.
+Implemented pagination & API fetching, improving loading efficiency by 60%.
+YouTube Clone (React, Node.js, PostgreSQL)
+
+Developed core features like video playback, authentication, and content management.
+Myntra Clone (React, Express, MongoDB)
+
+Built an e-commerce platform with seamless navigation, product browsing, and checkout.
+Netflix Clone (HTML, CSS, JavaScript)
+
+Implemented an interactive UI with movie streaming capabilities.
+Weather App (React, API Integration)
+
+Provides real-time weather updates for any location.
+Currency Converter (React, Live Conversion API)
+
+Fetches live exchange rates and converts currencies dynamically.
+Crop Recommendation System (React, Flask, MongoDB)
+
+Uses AI to help farmers optimize fertilizer use based on location, weather, and soil type.
+4. Work Experience & Internships
+A. Dripvive (Paid Internship, ₹35K/month) – Full Stack AI Engineer
+📅 Nov 2024 – Apr 2024 (Hybrid Internship)
+
+Built AI-powered projects using custom datasets.
+Developed efficient backend systems and optimized data pipelines.
+Worked as a full-stack engineer on AI-driven applications.
+B. Systeck Solution (Virtual Internship via AICTE) – Frontend Engineer Intern
+📅 March 2024 – April 2024
+
+Built a freelance website for customizable templates.
+Improved loading efficiency by 60% using optimized API fetching.
+5. Education
+Chandigarh University (2022 – 2026)
+B.Tech in Computer Science Engineering (CGPA: 7.4)
+Specialized in AI, Full-Stack Development, and Competitive Programming
+The Bohras Global School
+Matriculation (2020 – 2021): 83.4%
+Intermediate (2017 – 2018): 84.3%
+6. Certifications & Achievements
+A. Certifications
+Meta Front-End Developer Professional Certificate (Coursera)
+Web Development in React.js: Build a Web App (Coursera)
+Data Structures and Algorithms Specialization (Coursera)
+Build a Connect-4 Clone in React + JavaScript (Udemy)
+Complete Photography MasterClass: 4 Courses in 1 (Udemy)
+B. Competitive Programming Achievements
+5-Star Coder on HackerRank
+Solved 500+ problems on CodeChef
+Top 1% in Coding Ninjas Competitive Programming Contest
+7. Additional Skills & Interests
+Development & Tools:
+React.js (Advanced)
+Next.js, Node.js, Express.js
+PostgreSQL, MongoDB, Prisma ORM
+Git, GitHub, Postman, VS Code
+Soft Skills:
+Leadership & Teamwork
+Problem Solving & Management
+Communication & Collaboration
+8. Contact Information
+📧 Email: bansalabhay00@gmail.com
+🔗 LinkedIn: https://www.linkedin.com/in/bansalabhay/
+x:https://x.com/AbCheckk,
+📞 Phone: +91-7973446163
