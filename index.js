@@ -43,7 +43,7 @@ if (!fs.existsSync(AUDIO_DIR)) {
 }
 
 // Path to the Rhubarb executable
-const RHUBARB_PATH = path.join(__dirname, "bin", "rhubarb.exe");
+const RHUBARB_PATH = path.join(__dirname, "bin", "rhubarb");
 
 // Predefined responses for basic questions
 const BASIC_QUESTIONS = {
