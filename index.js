@@ -7,29 +7,13 @@ import { fileURLToPath } from "url";
 import * as PlayHT from "playht";
 import { exec } from "child_process";
 
-import cors from "cors";
-
 // Fix __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Load environment variables
 dotenv.config();
-const app = express();
-app.use(express.json());
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (origin && origin !== process.env.CORS_ORIGIN) {
-        console.log("Blocked CORS origin: ", origin); // Log blocked origin
-        callback(new Error("CORS Not Allowed"), false);
-      } else {
-        callback(null, true);
-      }
-    },
-    credentials: true,
-  })
-);
+
 const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;
 const PLAY_HT_USER_ID = process.env.PLAY_HT_USER_ID;
 const PLAY_HT_API_KEY = process.env.PLAY_HT_API_KEY;
@@ -191,7 +175,8 @@ const generateMouthCues = async (audioFilePath, outputFilePath) => {
 };
 
 // Initialize Express app
-
+const app = express();
+app.use(express.json());
 
 // Handle user questions
 app.post("/ask", async (req, res) => {
