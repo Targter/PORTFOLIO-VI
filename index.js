@@ -9,7 +9,19 @@ import { exec } from "child_process";
 
 import cors from "cors";
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (origin && origin !== process.env.CORS_ORIGIN) {
+        console.log("Blocked CORS origin: ", origin); // Log blocked origin
+        callback(new Error("CORS Not Allowed"), false);
+      } else {
+        callback(null, true);
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 // Fix __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
