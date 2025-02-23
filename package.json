@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "chmod +x bin/rhubarb && npm install"
   },
   "author": "",
   "license": "ISC",
