@@ -1,17 +1,89 @@
-import { useRef } from "react";
+import React, { useCallback, useEffect, useState, useRef } from "react";
+import { Mic } from "lucide-react";
+import "regenerator-runtime/runtime";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 import { useChat } from "../hooks/useChat";
 
 export const UI = ({ hidden, ...props }) => {
   const input = useRef();
   const { chat, loading, cameraZoomed, setCameraZoomed, message } = useChat();
+  const [isRecording, setIsRecording] = useState(false);
 
-  const sendMessage = () => {
+  const {
+    transcript,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+    listening,
+  } = useSpeechRecognition();
+
+  // Timeout to detect silence
+  const silenceTimeout = useRef(null);
+
+  // Effect to reset transcript when chat changes
+  useEffect(() => {
+    if (chat) {
+      resetTranscript();
+    }
+  }, [chat, resetTranscript]);
+
+  // Toggle recording
+  const toggleRecording = useCallback(() => {
+    if (isRecording) {
+      SpeechRecognition.stopListening();
+    } else {
+      SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
+    }
+    setIsRecording((prev) => !prev);
+  }, [isRecording]);
+
+  // Send message function
+  const sendMessage = useCallback(() => {
     const text = input.current.value;
-    if (!loading && !message) {
+    console.log(text);
+    if (!loading && !message && text.trim()) {
       chat(text);
       input.current.value = "";
+      resetTranscript(); // Clear the transcript after sending
     }
-  };
+  }, [loading, message, chat, resetTranscript]);
+
+  // Effect to detect silence and auto-send
+  useEffect(() => {
+    if (listening && transcript) {
+      // Clear the previous timeout
+      if (silenceTimeout.current) {
+        clearTimeout(silenceTimeout.current);
+      }
+
+      // Set a new timeout to detect silence
+      silenceTimeout.current = setTimeout(() => {
+        if (listening) {
+          sendMessage(); // Auto-send when silence is detected
+        }
+      }, 2000); // 2 seconds of silence
+    }
+
+    // Cleanup timeout on unmount or when listening stops
+    return () => {
+      if (silenceTimeout.current) {
+        clearTimeout(silenceTimeout.current);
+      }
+    };
+  }, [listening, transcript, sendMessage]);
+
+  // Update input value with transcript
+  useEffect(() => {
+    if (transcript) {
+      input.current.value = transcript;
+    }
+  }, [transcript]);
+
+  if (!browserSupportsSpeechRecognition) {
+    return null;
+  }
+
   if (hidden) {
     return null;
   }
@@ -19,10 +91,6 @@ export const UI = ({ hidden, ...props }) => {
   return (
     <>
       <div className="fixed top-0 left-0 right-0 bottom-0 z-10 flex justify-between p-4 flex-col pointer-events-none">
-        {/* <div className="self-start backdrop-blur-md bg-white bg-opacity-50 p-4 rounded-lg">
-          <h1 className="font-black text-xl">My Virtual GF</h1>
-          <p>I will always love you ❤️</p>
-        </div> */}
         <div className="w-full flex flex-col items-end justify-center gap-4">
           <button
             onClick={() => setCameraZoomed(!cameraZoomed)}
@@ -87,6 +155,16 @@ export const UI = ({ hidden, ...props }) => {
           </button>
         </div>
         <div className="flex items-center gap-2 pointer-events-auto max-w-screen-sm w-full mx-auto">
+          <button
+            onClick={toggleRecording}
+            className={`p-2 rounded-full ${
+              isRecording
+                ? "bg-[#2f2f2f] text-red-600"
+                : "bg-[#2f2f2f] text-gray-600"
+            }`}
+          >
+            <Mic className="h-7 w-7" />
+          </button>
           <input
             className="w-full placeholder:text-gray-800 placeholder:italic p-4 rounded-md bg-opacity-50 bg-white backdrop-blur-md"
             placeholder="Type a message..."

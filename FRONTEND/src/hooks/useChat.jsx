@@ -1,23 +1,53 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { mouthCues } from "../../public/mouth_cues";
+import axios from "axios";
 const backendUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const ChatContext = createContext();
 
+const base64ToBlob = (base64, mimeType) => {
+  const byteCharacters = atob(base64);
+  const byteArrays = [];
+
+  for (let offset = 0; offset < byteCharacters.length; offset += 512) {
+    const slice = byteCharacters.slice(offset, offset + 512);
+    const byteNumbers = new Array(slice.length);
+    for (let i = 0; i < slice.length; i++) {
+      byteNumbers[i] = slice.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    byteArrays.push(byteArray);
+  }
+
+  return new Blob(byteArrays, { type: mimeType });
+};
+
+//
 export const ChatProvider = ({ children }) => {
   const chat = async (messageee) => {
     setLoading(true);
+    const response = await axios.post("http://localhost:8080/ask", {
+      question: messageee,
+    });
+    console.log("response:", response);
+    // const audio = new Audio(response.data.audio);
+    // const audioBlob = base64ToBlob(response.data.audio, "audio/mpeg");
+    // const audioUrl = URL.createObjectURL(audioBlob);
+    console.log(response.data.audio);
+    const audioBlob = base64ToBlob(response.data.audio, "audio/mpeg");
+    const audioUrl = URL.createObjectURL(audioBlob);
+    const audio = new Audio(audioUrl);
 
-    const audio = new Audio("public/welcome.ogg");
     const message = {
-      text: "this is my data", // Text from the input
+      text: response.data.response, // Text from the input
       audio: audio, // Audio URL from the fetched blob
       lipsync: {
-        mouthCues,
+        mouthCues: response.data.mouthCues.mouthCues,
       }, // Use default or empty lipsync data if not available
       facialExpression: "smile",
-      animation: "Greeting",
+      animation: "Talking",
     };
+    // audio.play();
     setMessages((messages) => [...messages, message]);
     setLoading(false);
   };

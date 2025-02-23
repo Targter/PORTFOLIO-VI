@@ -125,8 +125,9 @@ export function Avatar(props) {
     setAnimation(message.animation);
     setFacialExpression(message.facialExpression);
     setLipsync(message.lipsync);
-    console.log("message:", message.lipsync);
+    console.log("message:", message.audio);
     const audio = message.audio;
+    console.log("audioooo:", audio);
     audio.play();
     setAudio(audio);
     audio.onended = onMessagePlayed;
@@ -163,7 +164,7 @@ export function Avatar(props) {
     // if (!actions[animation]) return;
     actions[animation]
       .reset()
-      .fadeIn(mixer.stats.actions.inUse === 0 ? 0 : 0.5)  
+      .fadeIn(mixer.stats.actions.inUse === 0 ? 0 : 0.5)
       .play();
     return () => actions[animation].fadeOut(0.5);
   }, [animation]);
