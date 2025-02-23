@@ -26,7 +26,7 @@ const base64ToBlob = (base64, mimeType) => {
 export const ChatProvider = ({ children }) => {
   const chat = async (messageee) => {
     setLoading(true);
-    const response = await axios.post("http://localhost:8080/ask", {
+    const response = await axios.post("https://portfolio-vi.onrender.com/ask", {
       question: messageee,
     });
     console.log("response:", response);
