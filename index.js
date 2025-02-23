@@ -7,6 +7,10 @@ import { fileURLToPath } from "url";
 import * as PlayHT from "playht";
 import { exec } from "child_process";
 
+import cors from "cors";
+const app = express();
+app.use(cors());
+app.use(express.json());
 // Fix __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -175,8 +179,6 @@ const generateMouthCues = async (audioFilePath, outputFilePath) => {
 };
 
 // Initialize Express app
-const app = express();
-app.use(express.json());
 
 // Handle user questions
 app.post("/ask", async (req, res) => {
@@ -205,9 +207,14 @@ app.post("/ask", async (req, res) => {
     // Read the mouth cues data
     const mouthCuesData = await fs.promises.readFile(mouthCuesFilePath, "utf8");
 
-    return res.json({
+    const audioBase64 = await fs.promises.readFile(mp3FilePath, {
+      encoding: "base64",
+    });
+
+    // Send the response, audio file, and mouth cues as JSON
+    res.json({
       response: response,
-      audio: `/audios/message_0.mp3`, // Path to the saved audio file
+      audio: audioBase64, // Base64 encoded audio file
       mouthCues: JSON.parse(mouthCuesData), // Mouth cues data
     });
   } catch (error) {
@@ -220,6 +227,7 @@ app.post("/ask", async (req, res) => {
 app.use("/audios", express.static(AUDIO_DIR));
 
 // Start the server
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
