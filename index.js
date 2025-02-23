@@ -15,6 +15,8 @@ const __dirname = path.dirname(__filename);
 
 // Load environment variables
 dotenv.config();
+const app = express();
+app.use(express.json());
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -189,8 +191,7 @@ const generateMouthCues = async (audioFilePath, outputFilePath) => {
 };
 
 // Initialize Express app
-const app = express();
-app.use(express.json());
+
 
 // Handle user questions
 app.post("/ask", async (req, res) => {
