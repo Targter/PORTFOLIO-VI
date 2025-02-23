@@ -13,9 +13,12 @@
     "@react-three/fiber": "8.13.3",
     "@react-three/xr": "^5.7.1",
     "@types/three": "0.152.1",
+    "axios": "^1.7.9",
     "leva": "^0.9.35",
+    "lucide-react": "^0.475.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-speech-recognition": "^3.10.0",
     "three": "0.153.0"
   },
   "devDependencies": {
