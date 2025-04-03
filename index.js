@@ -205,29 +205,29 @@ app.post("/ask", async (req, res) => {
     console.log("Response generated:", response);
 
     // Save the audio file
-    const mp3FilePath = path.join(AUDIO_DIR, "message_0.mp3");
-    await textToSpeech(response, mp3FilePath);
+    // const mp3FilePath = path.join(AUDIO_DIR, "message_0.mp3");
+    // await textToSpeech(response, mp3FilePath);
 
     // Convert MP3 to WAV
-    const wavFilePath = path.join(AUDIO_DIR, "message_0.wav");
-    await convertMp3ToWav(mp3FilePath, wavFilePath);
+    // const wavFilePath = path.join(AUDIO_DIR, "message_0.wav");
+    // await convertMp3ToWav(mp3FilePath, wavFilePath);
 
     // Generate mouth cues
-    const mouthCuesFilePath = path.join(AUDIO_DIR, "message_0.json");
-    await generateMouthCues(wavFilePath, mouthCuesFilePath);
+    // const mouthCuesFilePath = path.join(AUDIO_DIR, "message_0.json");
+    // await generateMouthCues(wavFilePath, mouthCuesFilePath);
 
     // Read the mouth cues data
-    const mouthCuesData = await fs.promises.readFile(mouthCuesFilePath, "utf8");
+    // const mouthCuesData = await fs.promises.readFile(mouthCuesFilePath, "utf8");
 
-    const audioBase64 = await fs.promises.readFile(mp3FilePath, {
-      encoding: "base64",
-    });
+    // const audioBase64 = await fs.promises.readFile(mp3FilePath, {
+    //   encoding: "base64",
+    // });
 
     // Send the response, audio file, and mouth cues as JSON
     res.json({
       response: response,
-      audio: audioBase64, // Base64 encoded audio file
-      mouthCues: JSON.parse(mouthCuesData), // Mouth cues data
+      // audio: audioBase64, // Base64 encoded audio file
+      // mouthCues: JSON.parse(mouthCuesData), // Mouth cues data
     });
   } catch (error) {
     console.error("Error processing request:", error);
