@@ -33,8 +33,8 @@ export const ChatProvider = ({ children }) => {
     // const audio = new Audio(response.data.audio);
     // const audioBlob = base64ToBlob(response.data.audio, "audio/mpeg");
     // const audioUrl = URL.createObjectURL(audioBlob);
-    console.log(response.data.audio);
-    const audioBlob = base64ToBlob(response.data.audio, "audio/mpeg");
+    // console.log(response.data.audio);
+    const audioBlob = base64ToBlob("ab.mp3", "audio/mpeg");
     const audioUrl = URL.createObjectURL(audioBlob);
     const audio = new Audio(audioUrl);
 
@@ -42,7 +42,7 @@ export const ChatProvider = ({ children }) => {
       text: response.data.response, // Text from the input
       audio: audio, // Audio URL from the fetched blob
       lipsync: {
-        mouthCues: response.data.mouthCues.mouthCues,
+        mouthCues: "mouth_cues.js",
       }, // Use default or empty lipsync data if not available
       facialExpression: "smile",
       animation: "Talking",
