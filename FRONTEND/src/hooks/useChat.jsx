@@ -41,7 +41,7 @@ export const ChatProvider = ({ children }) => {
         text: response.data.response,
         audio: audio,
       lipsync: {
-        mouthCues: "public/mouth_cues.js",
+        mouthCues: "/mouth_cues.js",
       }, // Use default or empty lipsync data if not available
       facialExpression: "smile",
       animation: "Talking",
