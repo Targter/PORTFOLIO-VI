@@ -34,8 +34,7 @@ export const ChatProvider = ({ children }) => {
     // const audioBlob = base64ToBlob(response.data.audio, "audio/mpeg");
     // const audioUrl = URL.createObjectURL(audioBlob);
     // console.log(response.data.audio);
-    const audioBlob = base64ToBlob("ab.mp3", "audio/mpeg");
-    const audioUrl = URL.createObjectURL(audioBlob);
+     const audioUrl = `/public/audio/${response.data.audio}`;
     const audio = new Audio(audioUrl);
 
     const message = {
